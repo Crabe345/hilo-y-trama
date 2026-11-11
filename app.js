@@ -38,43 +38,43 @@ const products = [{
 
 const photos = [{
     category: "bolsas",
-    file: "bolsa-gato",
+    file: "bolsa-gato-lino",
     title: "Bolsa de tela con diseño de gato",
     description: "Bolsa color crema con asas tejidas y un estampado negro."
   },
   {
     category: "neceseres",
-    file: "neceseres-acolchados",
+    file: "neceseres-acolchados-lino",
     title: "Neceseres acolchados",
     description: "Tres modelos en tonos pastel con costuras y acabados distintos."
   },
   {
     category: "mandiles",
-    file: "mandil-peru",
+    file: "mandil-peru-lino",
     title: "Mandil con escudo del Perú",
     description: "Mandil negro con ribetes y tiras rojas."
   },
   {
     category: "estampados",
-    file: "estampados-bolsas",
+    file: "estampados-bolsas-lino",
     title: "Estampados ilustrados y fotográficos",
     description: "Dos diseños distintos aplicados sobre bolsas de tela."
   },
   {
     category: "bolsas",
-    file: "bolsa-yute",
+    file: "bolsa-yute-lino",
     title: "Bolsa de yute con logo",
     description: "Bolsa estructurada de trama gruesa con un diseño en azul."
   },
   {
     category: "bolsas",
-    file: "bolsa-raso",
+    file: "bolsa-raso-lino",
     title: "Bolsita de raso con flores",
     description: "Raso plateado con estampado floral y cinta dorada."
   },
   {
     category: "bolsas",
-    file: "bolsa-cordon",
+    file: "bolsa-cordon-lino",
     title: "Bolsa estampada con cordón",
     description: "Bolsa de tela clara con motivos de temporada y cierre de cordón."
   },
@@ -160,7 +160,7 @@ for (const photo of photos) {
   const title = photo.title;
   const description = photo.description;
   const card = document.createElement("article");
-  card.className = "card work-photo";
+  card.className = "card";
   card.dataset.category = product.id;
   card.innerHTML = `<div class="card-image"><img src="assets/${photo.file}.jpg" alt="" width="512" height="512" loading="lazy"></div><div class="card-body"><h3>${title}</h3><p>${description}</p><a href="#cotizar" aria-label="Cotizar: ${title}">Cotizar <span aria-hidden="true">↗</span></a></div>`;
   card.querySelector("a").addEventListener("click", () => {
