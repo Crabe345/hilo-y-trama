@@ -66,12 +66,7 @@ const photos = [{
     title: "Bolsa de yute con logo",
     description: "Bolsa estructurada de trama gruesa con un diseño en azul."
   },
-  {
-    category: "bolsas",
-    file: "bolsa-raso-lino",
-    title: "Bolsita de raso con flores",
-    description: "Raso plateado con estampado floral y cinta dorada."
-  },
+
   {
     category: "bolsas",
     file: "bolsa-cordon-lino",
