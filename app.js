@@ -1,27 +1,83 @@
 const workshop = {
   whatsapp: "51995923310",
-  address: ""
+  address: "Galería Guizado, Jr. General Orbegoso 263, puerta 2, segundo piso, tienda 279, Breña, Lima.",
+  mapCoordinates: "-12.0667853,-77.0501147"
 };
 
-const products = [
-  { id: "bolsas", name: "Bolsas", description: "Bolsas de tela para llevar, regalar o personalizar con tu logo." },
-  { id: "neceseres", name: "Neceseres", description: "Estuches para llevar tus artículos personales, con la tela y el acabado que elijas." },
-  { id: "cartucheras", name: "Cartucheras", description: "Estuches para útiles o accesorios, con colores y diseño a pedido." },
-  { id: "morrales", name: "Morrales", description: "Bolsos de tela con correa para llevar al hombro o cruzados." },
-  { id: "mandiles", name: "Mandiles", description: "Mandiles para cocina, taller o negocio, con opción de personalizarlos." },
-  { id: "estampados", name: "Estampados", description: "Tu diseño sobre tela. Consulta por estampado, serigrafía o sublimado." }
+const products = [{
+    id: "bolsas",
+    name: "Bolsas",
+    description: "Bolsas de tela para llevar, regalar o personalizar con tu logo."
+  },
+  {
+    id: "neceseres",
+    name: "Neceseres",
+    description: "Estuches para llevar tus artículos personales, con la tela y el acabado que elijas."
+  },
+  {
+    id: "cartucheras",
+    name: "Cartucheras",
+    description: "Estuches para útiles o accesorios, con colores y diseño a pedido."
+  },
+  {
+    id: "morrales",
+    name: "Morrales",
+    description: "Bolsos de tela con correa para llevar al hombro o cruzados."
+  },
+  {
+    id: "mandiles",
+    name: "Mandiles",
+    description: "Mandiles para cocina, taller o negocio, con opción de personalizarlos."
+  },
+  {
+    id: "estampados",
+    name: "Estampados",
+    description: "Tu diseño sobre tela. Consulta por estampado, serigrafía o sublimado."
+  }
 ];
 
-const photos = [
-  { category: "bolsas", file: "bolsa-gato", title: "Bolsa de tela con diseño de gato", description: "Bolsa color crema con asas tejidas y un estampado negro." },
-  { category: "neceseres", file: "neceseres-acolchados", title: "Neceseres acolchados", description: "Tres modelos en tonos pastel con costuras y acabados distintos." },
-  { category: "mandiles", file: "mandil-peru", title: "Mandil con escudo del Perú", description: "Mandil negro con ribetes y tiras rojas." },
-  { category: "estampados", file: "estampados-bolsas", title: "Estampados ilustrados y fotográficos", description: "Dos diseños distintos aplicados sobre bolsas de tela." },
-  { category: "bolsas", file: "bolsa-yute", title: "Bolsa de yute con logo", description: "Bolsa estructurada de trama gruesa con un diseño en azul." },
-  { category: "bolsas", file: "bolsa-raso", title: "Bolsita de raso con flores", description: "Raso plateado con estampado floral y cinta dorada." },
-  { category: "bolsas", file: "bolsa-cordon", title: "Bolsa estampada con cordón", description: "Bolsa de tela clara con motivos de temporada y cierre de cordón." },
-  { category: "cartucheras", file: "cartucheras" },
-  { category: "morrales", file: "morrales" }
+const photos = [{
+    category: "bolsas",
+    file: "bolsa-gato",
+    title: "Bolsa de tela con diseño de gato",
+    description: "Bolsa color crema con asas tejidas y un estampado negro."
+  },
+  {
+    category: "neceseres",
+    file: "neceseres-acolchados",
+    title: "Neceseres acolchados",
+    description: "Tres modelos en tonos pastel con costuras y acabados distintos."
+  },
+  {
+    category: "mandiles",
+    file: "mandil-peru",
+    title: "Mandil con escudo del Perú",
+    description: "Mandil negro con ribetes y tiras rojas."
+  },
+  {
+    category: "estampados",
+    file: "estampados-bolsas",
+    title: "Estampados ilustrados y fotográficos",
+    description: "Dos diseños distintos aplicados sobre bolsas de tela."
+  },
+  {
+    category: "bolsas",
+    file: "bolsa-yute",
+    title: "Bolsa de yute con logo",
+    description: "Bolsa estructurada de trama gruesa con un diseño en azul."
+  },
+  {
+    category: "bolsas",
+    file: "bolsa-raso",
+    title: "Bolsita de raso con flores",
+    description: "Raso plateado con estampado floral y cinta dorada."
+  },
+  {
+    category: "bolsas",
+    file: "bolsa-cordon",
+    title: "Bolsa estampada con cordón",
+    description: "Bolsa de tela clara con motivos de temporada y cierre de cordón."
+  },
 ];
 
 const form = document.querySelector("#quote-form");
@@ -45,7 +101,12 @@ function showCategory(category) {
   document.querySelector("#results").textContent = count === 1 ? "1 ejemplo visible" : count + " ejemplos visibles";
 }
 
-for (const category of [{ id: "todos", name: "Todas" }, ...products]) {
+const catalogCategories = products.filter(product => photos.some(photo => photo.category === product.id));
+
+for (const category of [{
+    id: "todos",
+    name: "Todas"
+  }, ...catalogCategories]) {
   const button = document.createElement("button");
   button.type = "button";
   button.dataset.category = category.id;
@@ -60,14 +121,12 @@ for (const product of products) {
 
 for (const photo of photos) {
   const product = products.find(item => item.id === photo.category);
-  const title = photo.title ?? product.name;
-  const description = photo.description ?? product.description;
-  const label = photo.title ? "Trabajo del taller" : "Imagen referencial";
+  const title = photo.title;
+  const description = photo.description;
   const card = document.createElement("article");
-  card.className = "card";
-  if (photo.title) card.classList.add("work-photo");
+  card.className = "card work-photo";
   card.dataset.category = product.id;
-  card.innerHTML = `<div class="card-image"><img src="assets/${photo.file}.jpg" alt="" width="512" height="512" loading="lazy"><small>${label}</small></div><div class="card-body"><h3>${title}</h3><p>${description}</p><a href="#cotizar" aria-label="Cotizar: ${title}">Cotizar <span aria-hidden="true">↗</span></a></div>`;
+  card.innerHTML = `<div class="card-image"><img src="assets/${photo.file}.jpg" alt="" width="512" height="512" loading="lazy"></div><div class="card-body"><h3>${title}</h3><p>${description}</p><a href="#cotizar" aria-label="Cotizar: ${title}">Cotizar <span aria-hidden="true">↗</span></a></div>`;
   card.querySelector("a").addEventListener("click", () => {
     fields.producto.value = product.name;
     messagePreview.hidden = true;
@@ -89,15 +148,15 @@ if (workshop.address) {
   const directions = document.querySelector("#directions");
   const route = new URL("https://www.google.com/maps/dir/");
   route.searchParams.set("api", "1");
-  route.searchParams.set("destination", workshop.address);
+  route.searchParams.set("destination", workshop.mapCoordinates || workshop.address);
   directions.href = route.href;
   directions.hidden = false;
-  document.querySelector(".map-art span").textContent = "Ilustración del recorrido";
+  document.querySelector(".map-art span").textContent = "Mapa ilustrativo";
 }
 
-document.querySelector("#form-help").textContent = whatsappReady
-  ? "Revisa tu mensaje en WhatsApp antes de enviarlo."
-  : "Modo de prueba. Puedes preparar y copiar el mensaje mientras se confirma el número del taller.";
+document.querySelector("#form-help").textContent = whatsappReady ?
+  "Revisa tu mensaje en WhatsApp antes de enviarlo." :
+  "Modo de prueba. Puedes preparar y copiar el mensaje mientras se confirma el número del taller.";
 if (!whatsappReady) document.querySelector("#submit-label").textContent = "Preparar mensaje de WhatsApp";
 
 fields.nombre.addEventListener("input", () => fields.nombre.setCustomValidity(""));
