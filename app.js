@@ -78,6 +78,42 @@ const photos = [{
     title: "Bolsa estampada con cordón",
     description: "Bolsa de tela clara con motivos de temporada y cierre de cordón."
   },
+  {
+    category: "bolsas",
+    file: "taller",
+    title: "Bolsa y neceser a juego",
+    description: "Ejemplo de una bolsa de tela con estampado botánico y un neceser verde."
+  },
+  {
+    category: "bolsas",
+    file: "bolsas",
+    title: "Bolsa con diseño botánico",
+    description: "Modelo de bolsa crema con asas largas y un estampado de hojas."
+  },
+  {
+    category: "neceseres",
+    file: "neceseres",
+    title: "Neceser beige con cierre",
+    description: "Modelo de neceser estructurado con tirador verde."
+  },
+  {
+    category: "cartucheras",
+    file: "cartucheras",
+    title: "Cartuchera verde",
+    description: "Modelo de cartuchera alargada con cierre y costura decorativa."
+  },
+  {
+    category: "mandiles",
+    file: "mandiles",
+    title: "Mandil crema con bolsillo",
+    description: "Modelo de mandil con bolsillo verde al frente."
+  },
+  {
+    category: "estampados",
+    file: "estampados",
+    title: "Estampado botánico",
+    description: "Ejemplo de un patrón de hojas verdes aplicado sobre tela crema."
+  },
 ];
 
 const form = document.querySelector("#quote-form");
